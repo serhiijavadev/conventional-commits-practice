@@ -1,0 +1,8 @@
+stages:
+  - test
+
+test:
+  stage: test
+  image: eclipse-temurin:25-jdk
+  script:
+    - ./mvnw test
