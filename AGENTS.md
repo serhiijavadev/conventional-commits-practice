@@ -2,139 +2,77 @@
 
 ## Project
 
-This is a small Spring Boot practice project used to learn and validate Conventional Commits with an AI coding agent.
+Spring Boot practice project for learning Conventional Commits.
 
-Tech stack:
-- Java 25
-- Spring Boot
-- Maven
-- JUnit 5
-- Spring Boot Test
+Stack: Java 25, Spring Boot, Maven, JUnit 5
 
-## Main goal
+## Conventional Commits format
 
-For every task, make a small focused change and create a git commit that follows Conventional Commits.
-
-The agent must not create vague commits such as:
-- update
-- changes
-- fix
-- wip
-- final
-- misc
-
-## Conventional Commit format
-
-Use this format:
-
+```
 <type>[optional scope]: <description>
+```
 
-Examples:
-- feat(time): add endpoint returning current server time
-- fix(time): return time in ISO-8601 format
-- test(time): add tests for current time endpoint
-- docs(readme): document available API endpoints
-- ci(gitlab): add basic pipeline for build and tests
-- refactor(time): extract current time provider service
-- chore(deps): update project dependencies
+## Commit types
 
-## Allowed commit types
-
-Use only these commit types:
-
-- feat: new user-facing or application functionality
-- fix: bug fix
-- docs: documentation-only changes
-- test: adding or changing tests
-- refactor: code restructuring without behavior change
-- perf: performance improvement
-- chore: maintenance task that does not affect application behavior
-- ci: CI/CD pipeline changes
-- build: build system or dependency changes
-- style: formatting-only changes
+| Type | Use when |
+|------|----------|
+| feat | new functionality |
+| fix | bug fix |
+| test | adding or updating tests |
+| docs | documentation only |
+| refactor | restructuring without behavior change |
+| chore | maintenance, no behavior change |
+| ci | CI/CD changes |
+| build | build system or dependencies |
+| perf | performance improvement |
+| style | formatting only |
 
 ## Scopes
 
-Prefer meaningful technical scopes.
+Use the module or feature name: `time`, `health`, `api`, `config`, `deps`, `gitlab`
 
-Good scopes:
-- time
-- health
-- api
-- docs
-- test
-- gitlab
-- build
-- config
+## Examples
 
-Bad scopes:
-- misc
-- changes
-- stuff
-- update
+```
+feat(time): add current time endpoint
+fix(time): return time in ISO-8601 format
+test(time): cover current time endpoint
+docs(readme): document time endpoint
+refactor(time): extract time provider service
+chore(deps): update spring boot version
+ci(gitlab): add build pipeline
+```
 
-## Commit rules
+## Breaking changes
 
-Before committing, the agent must:
+Add `!` after type/scope, add `BREAKING CHANGE:` footer:
 
-1. Summarize what changed.
-2. Run relevant tests when possible.
-3. Show the exact commit message it will use.
-4. Use a Conventional Commit message.
-5. Keep one logical change per commit.
+```
+feat(api)!: remove v1 time endpoint
 
-If the task contains multiple unrelated changes, split them into multiple commits.
+BREAKING CHANGE: /api/v1/time removed; use /api/v2/time
+```
 
-## Commit message quality
+## Before every commit
 
-The description must be:
-- short
-- imperative
-- lower-case unless a proper noun is needed
-- specific enough to understand the change
+1. Run `./mvnw test` — if tests fail, fix before committing
+2. Show the exact commit message
+3. One logical change per commit — split unrelated changes
 
-Good:
-- feat(time): add current time endpoint
-- test(time): cover current time endpoint
-- docs(readme): document time endpoint
+## Commit message rules
 
-Bad:
-- feat: changes
-- fix: update
-- chore: work
-- update code
-- WIP
+- Imperative, lowercase, no period at the end
+- Specific enough to understand the change without reading the diff
+- Never: `update`, `changes`, `fix`, `wip`, `final`, `misc`
 
-## Testing
+## Git rules
 
-For Java changes, run the relevant test command before committing.
+- Never amend or rewrite history unless explicitly asked
+- Never commit build output or IDE files
 
-Use one of these depending on the project:
+## After completing a task
 
-Maven:
-./mvnw test
-
-Gradle:
-./gradlew test
-
-If tests cannot be run, explain why before committing.
-
-## Git behavior
-
-The agent may create commits when explicitly asked.
-
-The agent must not:
-- rewrite existing git history unless explicitly asked
-- amend previous commits unless explicitly asked
-- create large unrelated commits
-- commit generated build output
-- commit IDE files unless they are intentionally part of the project
-
-## Response format after work
-
-After completing a task, respond with:
-
-1. Summary
-2. Tests run
+1. What changed
+2. Test result
 3. Commit message used
 4. Files changed
