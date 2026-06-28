@@ -2,4 +2,6 @@
 
 Follow `AGENTS.md` for all tasks.
 
-Key rule: every commit must follow Conventional Commits — always show the exact message before committing.
+Key rule: every commit must follow Conventional Commits.
+
+Before running `git commit`: propose the message and use `AskUserQuestion` to get explicit approval. Never commit without it.
