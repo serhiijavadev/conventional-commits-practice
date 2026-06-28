@@ -14,70 +14,25 @@ Do not proceed without a ticket number.
 
 ## Step 2 — Run tests
 
-Run:
-```
-./mvnw test
-```
-
-If tests fail, show the failure output and stop. Do not proceed to commit.
+Run `./mvnw test`. If tests fail, show the failure output and stop.
 
 ## Step 3 — Inspect changes
 
-Run:
-```
-git diff HEAD
-git status
-```
-
-Read every changed file carefully before drafting the commit message.
+Run `git diff HEAD` and `git status`. Read every changed file before drafting the message.
 
 ## Step 4 — Propose commit message
 
-Draft a message using the project format:
-```
-PRJ-<ticket> <type>[optional scope]: <description>
-```
+Format: `PRJ-<ticket> <type>[optional scope]: <description>`
 
-Show it to the user and ask explicitly:
-> "Proposed commit message:
-> `PRJ-XXXXX type(scope): description`
->
-> Approve, or suggest a change?"
-
+Show the proposed message to the user and ask explicitly for approval.
 **Do not run `git commit` until the user explicitly approves the message.**
 
 ## Step 5 — Commit
 
-After approval, stage only the relevant changed files (never `git add .` or `git add -A`) and commit:
+After approval, stage only the relevant files (never `git add .`) and commit:
 ```
 git add <specific files>
 git commit -m "<approved message>"
 ```
 
----
-
-## Format reference
-
-```
-PRJ-<ticket> <type>[optional scope]: <description>
-```
-
-| Type       | Use when                              |
-|------------|---------------------------------------|
-| feat       | new functionality                     |
-| fix        | bug fix                               |
-| test       | adding or updating tests              |
-| docs       | documentation only                    |
-| refactor   | restructuring without behavior change |
-| chore      | maintenance, no behavior change       |
-| ci         | CI/CD changes                         |
-| build      | build system or dependencies          |
-| perf       | performance improvement               |
-| style      | formatting only                       |
-
-Scopes: `time` `health` `api` `config` `deps` `gitlab` `claude`
-
-Rules:
-- Imperative, lowercase, no period at the end
-- Never use: `update`, `changes`, `fix`, `wip`, `final`, `misc`
-- Breaking change: add `!` after scope + `BREAKING CHANGE:` footer
+See `AGENTS.md` for full type definitions, scopes, and examples.

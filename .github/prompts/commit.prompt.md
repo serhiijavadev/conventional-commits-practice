@@ -13,61 +13,25 @@ Do not proceed without a ticket number.
 
 ## Step 2 — Run tests
 
-Run:
-```
-./mvnw test
-```
-
-If tests fail, report the failure and stop. Do not proceed to commit.
+Run `./mvnw test`. If tests fail, report the failure and stop.
 
 ## Step 3 — Inspect changes
 
-Run:
-```
-git diff HEAD
-git status
-```
-
-Understand every changed file before drafting the message.
+Run `git diff HEAD` and `git status`. Understand every changed file before drafting the message.
 
 ## Step 4 — Propose commit message
 
-Draft a message using the project format:
-```
-PRJ-<ticket> <type>[optional scope]: <description>
-```
+Format: `PRJ-<ticket> <type>[optional scope]: <description>`
 
-Show it to the user and ask explicitly:
-> "Proposed commit message:
-> `PRJ-XXXXX type(scope): description`
->
-> Approve, or suggest a change?"
-
+Show the proposed message to the user and ask explicitly for approval.
 **Do not run `git commit` until the user explicitly approves.**
 
 ## Step 5 — Commit
 
-After approval, stage only the relevant files and commit:
+After approval, stage only the relevant files (never `git add .`) and commit:
 ```
-git add <files>
+git add <specific files>
 git commit -m "<approved message>"
 ```
 
-Do not use `git add .` or `git add -A` — be explicit about which files are staged.
-
----
-
-## Format reference
-
-```
-PRJ-<ticket> <type>[optional scope]: <description>
-```
-
-Types: `feat` `fix` `test` `docs` `refactor` `chore` `ci` `build` `perf` `style`
-
-Scopes: `time` `health` `api` `config` `deps` `gitlab` `claude`
-
-Rules:
-- Imperative, lowercase, no period at the end
-- Never: `update`, `changes`, `fix`, `wip`, `final`, `misc`
-- Breaking change: add `!` after scope + `BREAKING CHANGE:` footer
+See `AGENTS.md` for full type definitions, scopes, and examples.

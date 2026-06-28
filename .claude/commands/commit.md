@@ -23,3 +23,5 @@ PRJ-<ticket> <type>[optional scope]: <description>
 Types: `feat`, `fix`, `test`, `docs`, `refactor`, `chore`, `ci`, `build`, `perf`, `style`
 
 Description: imperative, lowercase, no period at the end.
+
+See `AGENTS.md` for full type definitions, scopes, and examples.
