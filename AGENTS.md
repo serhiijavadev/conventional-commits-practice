@@ -56,12 +56,15 @@ PRJ-1234 feat(api)!: remove v1 time endpoint
 BREAKING CHANGE: /api/v1/time removed; use /api/v2/time
 ```
 
-## Before every commit
+## Commit workflow
 
-1. Run `./mvnw test` — if tests fail, fix before committing
-2. Show the proposed commit message and ask for approval — never commit without it
-3. Wait for explicit user confirmation (Approve) before running `git commit`
-4. One logical change per commit — split unrelated changes
+After completing a task:
+1. Report what was done and stop — do not propose a commit
+2. Wait for the user to review the changes and explicitly ask to commit
+3. Only then: run `./mvnw test`, propose the commit message, wait for approval
+4. Never run `git commit` without explicit user approval of the message
+
+One logical change per commit — split unrelated changes.
 
 ## Commit message rules
 
