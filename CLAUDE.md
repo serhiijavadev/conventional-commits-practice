@@ -2,6 +2,7 @@
 
 Follow `AGENTS.md` for all tasks.
 
-Key rule: every commit must follow Conventional Commits.
-
-Before running `git commit`: propose the message and use `AskUserQuestion` to get explicit approval. Never commit without it.
+Key rules:
+- Every commit must follow the format: `PRJ-<ticket> <type>[scope]: <description>`
+- Before running `git commit`: propose the message and use `AskUserQuestion` to get explicit approval. Never commit without it.
+- If no ticket number is given, ask the user before committing.

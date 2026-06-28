@@ -6,11 +6,14 @@ Spring Boot practice project for learning Conventional Commits.
 
 Stack: Java 25, Spring Boot, Maven, JUnit 5
 
-## Conventional Commits format
+## Commit format
 
 ```
-<type>[optional scope]: <description>
+PRJ-<ticket> <type>[optional scope]: <description>
 ```
+
+Every commit must start with a Jira ticket reference. The project key is always `PRJ`.
+If no ticket is provided in the task, ask the user before committing.
 
 ## Commit types
 
@@ -34,13 +37,13 @@ Use the module or feature name: `time`, `health`, `api`, `config`, `deps`, `gitl
 ## Examples
 
 ```
-feat(time): add current time endpoint
-fix(time): return time in ISO-8601 format
-test(time): cover current time endpoint
-docs(readme): document time endpoint
-refactor(time): extract time provider service
-chore(deps): update spring boot version
-ci(gitlab): add build pipeline
+PRJ-1234 feat(time): add current time endpoint
+PRJ-1234 fix(time): return time in ISO-8601 format
+PRJ-1234 test(time): cover current time endpoint
+PRJ-1234 docs(readme): document time endpoint
+PRJ-1234 refactor(time): extract time provider service
+PRJ-1234 chore(deps): update spring boot version
+PRJ-1234 ci(gitlab): add build pipeline
 ```
 
 ## Breaking changes
@@ -48,7 +51,7 @@ ci(gitlab): add build pipeline
 Add `!` after type/scope, add `BREAKING CHANGE:` footer:
 
 ```
-feat(api)!: remove v1 time endpoint
+PRJ-1234 feat(api)!: remove v1 time endpoint
 
 BREAKING CHANGE: /api/v1/time removed; use /api/v2/time
 ```
